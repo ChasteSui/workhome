@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 200px;
+				width: 200px;
+				border: 1px solid black;
+				margin-top: 40px;
+			}
+			.boxshawdo{
+				border-top:2px solid #fbb805;
+			}
+			
+			.test-icon{
+				background-color: blue;
+			}
+			
+			.test-icon i{
+				width: 18px;
+				height: 18px;
+				display: block;
+				background-image: url(img/icon/icon-1.png);
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.ddd .fff').on('click', function(){
+				    var queryUrl = '?queryStr=all'; //
+    				queryAndUpadteTable(queryUrl);
+				});
+			})
+			
+			function queryAndUpadteTable(url){
+				alert(url)
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div class="sss ddd" id="s">
+			<p class="fff">fffffffffffffff</p>
+		</div>
+		<div class="boxshawdo">
+			
+		</div>
+		<div class="test-icon">
+			<i></i>
+		</div>
+	</body>
+</html>
