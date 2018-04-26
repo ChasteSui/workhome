@@ -10,13 +10,13 @@
   vertical-align: top;
   position: relative;
 }
-.sui-steps-round > div .wrap:before,
-.sui-steps-round > div .wrap:after {
+.sui-steps-round > div .steps-wrap:before,
+.sui-steps-round > div .steps-wrap:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.sui-steps-round > div .wrap:after {
+.sui-steps-round > div .steps-wrap:after {
   clear: both;
 }
 .sui-steps-round > div > label {
@@ -55,11 +55,11 @@
   right: 0;
 }
 .sui-steps-round > div .round {
-  width: 22px;
-  height: 22px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
   display: inline-block;
   vertical-align: middle;
   font-size: 12px;
@@ -69,13 +69,13 @@
   float: left;
 }
 .sui-steps-round > div .bar {
-  margin: 10px 10px 0px 40px;
+  margin: 15px 0px 0px 0px;
   width: 200px;
   height: 6px;
   vertical-align: middle;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .sui-steps-round > .finished .round {
   border: 4px #28a3ef solid;
@@ -115,19 +115,19 @@
   width: auto;
 }
 
-.steps-3 > div {
+.all-steps-3 > div {
   width: 50%;
 }
-.steps-4 > div {
+.all-steps-4 > div {
   width: 33%;
 }
-.steps-5 > div {
+.all-steps-5 > div {
   width: 25%;
 }
-.steps-6 > div {
+.all-steps-6 > div {
   width: 20%;
 }
-.steps-7 > div {
+.all-steps-7 > div {
   width: 16%;
 }
 
@@ -184,7 +184,7 @@
 .finished-icon{
 	width: 18px;
 	height: 18px;
-	background-image: url(../../img/icon/icon-1.png);
+	background-image: url(../../images/steps-icon/steps-07.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover; /*background-size的cover特定值会保持图像本身的宽高比例，将图片缩放到正好完全覆盖定义背景的区域。*/

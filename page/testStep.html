@@ -3,58 +3,60 @@
 <head>
 	<meta charset="UTF-8">
 	<title>步骤条DEMO</title>
-	<link rel="stylesheet" type="text/css" href="../css/test/animate.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/test/docs.css"/>
+	<!--<link rel="stylesheet" type="text/css" href="../css/test/animate.css"/>-->
+	<!--<link rel="stylesheet" type="text/css" href="../css/test/docs.css"/>-->
 	<link rel="stylesheet" type="text/css" href="../css/normal/steps.css"/>
+	
 </head>
 <body>
-	<span>同时指定了steps-round-auto和steps步骤数,步骤条会整体自适应，同时单个step保持一定比例的宽度，目前提供steps-3到steps-7，使用方法类似bootstrap的删隔布局</span>
-		<div class="sui-steps-round steps-round-auto steps-6">
-		  <div class="finished">
+	<span>用于项目中的步骤图DEMO</span>
+		<div class="sui-steps-round steps-round-auto all-steps-5">
+		  <div class="judge-status finished">
 		    <div class="wrap">
 		      <div class="round">1</div>
 		      <div class="bar"></div>
 		    </div>
-		    <label>文文字描述文字描述文字描述文字描述字描述文字</label>
+		    <label>开始</label>
 		  </div>
-		  <div class="finished">
+		  <div class="judge-status finished">
 		    <div class="wrap">
 		      <div class="round"><i class="finished-icon"></i></div>
 		      <div class="bar"></div>
 		    </div>
-		    <label>文字描述</label>
+		    <label>上传</label>
 		  </div>
-		  <div class="finished">
+		  <div class="judge-status current">
 		    <div class="wrap">
 		      <div class="round">3</div>
 		      <div class="bar"></div>
 		    </div>
-		    <label>文字描述</label>
+		    <label>还原</label>
 		  </div>
-		  <div class="current">
+		  <div class="judge-status todo">
 		    <div class="wrap">
 		      <div class="round">4</div>
 		      <div class="bar"></div>
 		    </div>
-		    <label>文字描述</label>
+		    <label>加工</label>
 		  </div>
-		  <div class="todo">
+		  <div class="todo judge-status">
 		    <div class="wrap">
 		      <div class="round">5</div>
 		      <div class="bar"></div>
 		    </div>
-		    <label>文字描述</label>
+		    <label>结束</label>
 		  </div>
-		  <div class="todo last">
+		  <!--<div class="todo last">
 		    <div class="wrap">
 		      <div class="round">6</div>
 		    </div>
 		    <label>文字描述</label>
-		  </div>
+		  </div>-->
 		</div>
 		
-		<div class="sss">
-			<i></i>
-		</div>
+		
+		<button onclick="test()">测试</button>
+		<script src="../js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-steps.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
