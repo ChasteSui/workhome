@@ -23,3 +23,12 @@ function test(){
 	
 	
 }
+
+function hhh() {
+	var sdjf = "dddd";
+	for() {
+
+	}
+	var s = document.getElementById("s");
+
+}
