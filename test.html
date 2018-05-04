@@ -1,49 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title>测试</title>
 	</head>
-
 	<body>
-
 		<p>点击下面的按钮来显示今天是周几：</p>
-
-		<button onclick="myFunction()">点击这里</button>
-
+		<button onclick="myFunOne()">第一种拓展方式</button>
 		<p id="demo"></p>
-
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/chastesui.js" ></script>
 		<script>
-			function myFunction() {
-				var x;
-				var d = 7;
-				switch(d) {
-					case 0:
-						x = "Today it's Sunday";
-						break;
-					case 3:
-						x = "Today it's Monday";
-						break;
-					case 5:
-						x = "Today it's Tuesday";
-						break;
-					case 7:
-						x = "Today it's Wednesday";
-						break;
-//					case 4:
-//						x = "Today it's Thursday";
-//						break;
-					case 9:
-						x = "Today it's Friday";
-						break;
-					case 10:
-						x = "Today it's Saturday";
-						break;
-				}
-				document.getElementById("demo").innerHTML = x;
+			//第一种方式  直接调用
+			function myFunOne(){
+				$.sayHello();
 			}
+			//第二种方式 通过DOM元素调用;
+			$("p").on('click',function(){
+				$(this).sayHi();
+			});
 		</script>
 	</body>
-
 </html>
