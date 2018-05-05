@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>数据管理资产展现</title>
+		<link rel="stylesheet" href="../../assets/css/style.css">
+		<link rel="stylesheet" href="../../assets/bootstrap/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../../assets/scroll/jquery.mCustomScrollbar.css">
+		<link rel="stylesheet" href="../../assets/select/select2.css">
+		<link rel="stylesheet" href="../../assets/pager/pager.css">
+		<link rel="stylesheet" href="../../assets/css/newSass.css">
+		<style>
+			.operate .dropdown .dropdown-menu {
+				width: 286px;
+				padding: 0px;
+			}
+			
+			.operate .dropdown .dropdown-menu li {
+				display: inline-block;
+				width: 90px;
+				height: 62px;
+			}
+			
+			.operate .dropdown .dropdown-menu li a {
+				font-size: 12px;
+				display: inline-block;
+				height: 100%;
+			}
+			
+			.operate .dropdown .dropdown-menu li:first-child a {
+				border-radius: 4px 0px 0px 2px;
+			}
+			
+			.operate .dropdown .dropdown-menu li:last-child a {
+				border-radius: 0 4px 4px 0;
+			}
+			
+			.operate .dropdown .dropdown-menu li a:hover {
+				background: -webkit-linear-gradient(left, #2298fd, #49d3fb);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(right, #2298fd, #49d3fb);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(right, #2298fd, #49d3fb);
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(to right, #2298fd, #49d3fb);
+				/* 标准的语法 */
+				color: #fff!important;
+			}
+			
+			.operate .dropdown .dropdown-menu li a .sec-icon {
+				display: block;
+				width: 25px;
+				height: 25px;
+				background-repeat: no-repeat;
+				margin: 4px auto 7px;
+				background-size: 100%;
+			}
+			
+			.operate .dropdown .dropdown-menu li a:hover .sec-icon.icon-1 {
+				background-image: url("../../assets/images/zhiliancaiji.png");
+			}
+			
+			.operate .dropdown .dropdown-menu li a .sec-icon.icon-1 {
+				background-image: url("../../assets/images/zhiliancaiji-a.png");
+			}
+			
+			.operate .dropdown .dropdown-menu li a:hover .sec-icon.icon-2 {
+				background-image: url("../../assets/images/beifencaiji-a.png");
+			}
+			
+			.operate .dropdown .dropdown-menu li a .sec-icon.icon-2 {
+				background-image: url("../../assets/images/beifencaiji.png");
+			}
+			
+			.operate .dropdown .dropdown-menu li a:hover .sec-icon.icon-3 {
+				background-image: url("../../assets/images/fujiacaiji-a.png");
+			}
+			
+			.operate .dropdown .dropdown-menu li a .sec-icon.icon-3 {
+				background-image: url("../../assets/images/fujicaiji.png");
+				background-size: 78% 95%;
+			}
+			
+			.operate .dropdown .dropdown-menu li a:hover .sec-icon.icon-4 {
+				background-image: url("../../assets/images/wenbencaiji-a.png");
+			}
+			
+			.operate .dropdown .dropdown-menu li a .sec-icon.icon-4 {
+				background-image: url("../../assets/images/wenbencaiji.png");
+			}
+			
+			.con-container {
+				margin: 30px auto 30px auto;
+				display: flex;
+				width: 100%;
+				height: 200px;
+			}
+			
+			.con-container .one {
+				flex: 1;
+			}
+			
+			.con-container .two {
+				flex: 2;
+			}
+			
+			.con-container .three {
+				flex: 1;
+			}
+			
+			.one .con-center {
+				text-align: center;
+			}
+			
+			.con-container .three,
+			.con-container .two,
+			.con-container .four {
+				margin-left: 30px;
+			}
+			
+			@media screen and (max-width: 1455px) {
+				.con-container .three,
+				.con-container .two,
+				.con-container .four {
+					margin-left: 10px;
+				}
+			}
+			
+			.con-container .one:hover {
+				border-top: 2px solid #5571ee;
+			}
+			
+			.con-container .two:hover {
+				border-top: 2px solid #39b54a;
+			}
+			
+			.con-container .three:hover {
+				border-top: 2px solid #fbb805;
+			}
+			
+			.con-container .con-flex {
+				background-color: #fff;
+				box-shadow: 0px 0px 20px #e5e5e5;
+				position: relative;
+				position: relative;
+				padding: 20px;
+				font-size: 17px;
+			}
+			
+			.con-container .con-flex .p {
+				padding: 0 20px;
+				border-left: 3px solid rgb(48, 129, 249);
+			}
+			
+			.con-container .con-icon {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 30px;
+				background-size: cover;
+			}
+			/* .con-container .left{
+                background-image: url(../../assets/images/dataCollect/1.png);
+        }
+        .con-container .center{
+                background-image: url(../../assets/images/dataCollect/2.png);
+        }
+        .con-container .right{
+                background-image: url(../../assets/images/dataCollect/3.png);
+        }*/
+			
+			.con-container .con-center {
+				height: 100%;
+				overflow: hidden;
+				width: 170px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.con-container .con-cen {
+				margin-left: 30%;
+			}
+			
+			.con-container .con-center .ce-name {
+				font-size: 17px;
+				font-weight: 600;
+				color: #767a77;
+				margin-top: 45px;
+			}
+			
+			.con-container .con-center .ce-unit {
+				font-size: 40px;
+				margin-top: 15px;
+			}
+			
+			.con-container .con-center span {
+				font-size: 20px;
+				color: green;
+			}
+			
+			.con-container .con-right {
+				display: flex;
+				height: 100%;
+				width: 40%;
+			}
+			
+			.con-container .con-right .con-ri-con {
+				border-left: 1px #ddd solid;
+				width: 40%;
+				height: 70%;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			
+			.con-container .con-right .con-ri-con li {
+				height: 55px;
+				line-height: 55px;
+				width: 100%;
+				font-size: 17px;
+				color: #767a77
+			}
+			
+			.con-container .con-right .con-ri-con .f-li {
+				margin-left: 40px;
+				font-weight: 600px;
+			}
+			
+			.con-container .con-right .con-ri-con .color1 {
+				color: #39b54a;
+			}
+			
+			.con-container .con-right .con-ri-con .color2 {
+				color: #e52a04;
+			}
+			
+			.con-container .con-right .con-ri-con ul {
+				padding-left: 30px;
+			}
+			
+			.con-container .con-right .con-ri-con .t-li {
+				font-size: 15px;
+			}
+			
+			.con-container .con-right .con-ri-con .color1-1 {
+				color: #39b54a;
+			}
+			
+			.con-container .con-right .con-ri-con .color1-2 {
+				color: #e52a04;
+			}
+			
+			.con-container .con-right .con-ri-con .hr {
+				height: 1px;
+				-webkit-transform: scaleY(.5);
+				-moz-transform: scaleY(.5);
+				-o-transform: scaleY(.5);
+			}
+			
+			.four-data .item-icon {
+				float: left;
+				width: 45%;
+				height: 30px;
+				box-sizing: border-box;
+				text-align: left;
+				margin: 10px 0 0px 10px;
+			}
+			
+			.four-data .item-icon span {
+				margin-left: 20px;
+			}
+			
+			.charts-inline li div {
+				height: 5px;
+				width: 10px;
+				display: inline-block;
+				background-color: blue;
+			}
+			
+			.charts-inline .blue {
+				background-color: blue;
+			}
+			.charts-inline .green {
+				background-color: green;
+			}
+			
+			.charts-inline .orange {
+				background-color: orange;
+			}
+			
+			.charts-inline .lightblue {
+				background-color: lightblue;
+			}
+			#obj-total{
+				font-size: 40px;
+			}
+			.business-icon{
+				background-image: url(../../assets/images/dataCollect/assetshow_05.png);
+			}
+			.finance-icon{
+				background-image: url(../../assets/images/dataCollect/assetshow_03.png);
+			}
+			.document-icon{
+				background-image: url(../../assets/images/dataCollect/assetshow_09.png);
+			}
+			.other-icon{
+				background-image: url(../../assets/images/dataCollect/assetshow_10.png);
+			}
+			.asset-icon{
+				width: 58px;
+				height: 58px;
+			}
+		</style>
+	</head>
+
+	<body class="content" style="background: transparent;">
+		<div class="location clearfix">
+			<dl>
+				<dt class="title-icon data-col">
+            <img src="../../assets/images/locationIcon/table.png" alt="">
+        </dt>
+				<dd class="title-a">您当前的位置：</dd>
+				<dd class="title-b">
+					<span>数据采集</span>
+					<span>资产清单</span>
+					<span class="active">数据管理资产展现</span>
+				</dd>
+			</dl>
+		</div>
+		<div class="main-wrap">
+			<div class="operate">
+				<span class="search-box">
+		            <span class="search-input">
+		                <input id="tar-year" type="text" value="" placeholder="选择年度">
+		                <input id="obj-name" type="text" value="" placeholder="输入单位名称">
+		                <i id="searchBtn" class="search-btn fa fa-search"></i>
+		            </span>
+					<span class="btn btn-blue" id="search-obj-info">搜 索</span>
+				</span>
+
+				<!--<div>
+
+        </div>-->
+			</div>
+			<div class="con-container">
+				<div class="con-flex one">
+					<p class="p">单位数量</p>
+					<div class="con-center">
+						<span class="set-font" id="obj-total"></span><span>(个)</span>
+					</div>
+				</div>
+				<div class="con-flex two">
+					<p class="p">数据分类</p>
+					<div class="four-data">
+						<div class="item-icon finance-div">
+							<span class="finance-icon asset-icon"></span>
+							<span>财务</span>
+							<span id="finance-total"></span>
+						</div>
+						<div class="item-icon business-div">
+							<span class="business-icon asset-icon"></span>
+							<span>业务</span>
+							<span id="business-total"></span>
+						</div>
+						<div class="item-icon document-div">
+							<span class="document-icon asset-icon"></span>
+							<span>文档</span>
+							<span id="document-total"></span>
+						</div>
+						<div class="item-icon other-div">
+							<span class="other-icon asset-icon"></span>
+							<span>其它</span>
+							<span id="other-total"></span>
+						</div>
+					</div>
+				</div>
+				<div class="con-flex three" style="position: relative;">
+					<p class="p">累计数据量</p>
+					<span>总量:</span><span id="data-total"></span>
+					<div class="charts-inline" style="width: 170px;height: 170px;">
+						<ul>
+							<li>
+								<div class="blue"></div>
+								<span class="">财务</span>
+								<span id="finance-data-total" class=""></span>
+							</li>
+							<li>
+								<div class="green"></div>
+								<span class="">业务</span>
+								<span id="business-data-total" class=""></span>
+							</li>
+							<li>
+								<div class="orange"></div>
+								<span class="">文档</span>
+								<span id="document-data-total" class=""></span>
+							</li>
+							<li>
+								<div class="lightblue"></div>
+								<span class="">其它</span>
+								<span id="other-data-total" class=""></span>
+							</li>
+						</ul>
+					</div>
+					<div class="charts-inline" style="width:170px;height:170px;position: absolute;right:30px;top:40px;">
+						<div id="hightcharts-datas-container" style="min-width:100%;height:100%"></div>
+					</div>
+				</div>
+			</div>
+			<div class="change-container">
+				<span class="change-bar">
+    		<span style="border-bottom: 1px solid blue;">年度累计数据量变化趋势</span>
+				<span>单位信息</span>
+			</div>
+			<div class="change-charts-or-table">
+				<div class="change-charts">
+
+				</div>
+				<div class="change-table">
+					<table class="my-table" id="table">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>单位名称</th>
+								<th>财务</th>
+								<th>业务</th>
+								<th>文档</th>
+								<th>其它</th>
+								<th>地域</th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+					<div class="table-msg clearfix">
+						<div class="left">共计10条 | 10条/页</div>
+						<ul class="pagination" id="pager"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		<!-- 任务名称字段 -->
+		<div id="task" class="filter-box">
+			<div class="setyears">
+				<select id="setyears" style="width:100%;">
+				</select>
+			</div>
+			<div class="tasktype">
+				<select id="settype" style="width:100%;">
+					<option value="">所有状态</option>
+					<option value="201">数据库直连</option>
+					<option value="202">数据库备份</option>
+					<option value="203">数据库附加</option>
+				</select>
+			</div>
+			<ul class="select status">
+				<div class="input">
+					<select id="setstatus" style="width:100%;">
+						<option value="3">所有状态</option>
+						<option value="1">执行中</option>
+						<option value="2">已完成</option>
+					</select>
+				</div>
+			</ul>
+		</div>
+		<!-- 任务状态字段 -->
+		<!-- <div id="taskStatus" class="filter-box">
+<ul class="sort">
+    <li class="active sort-up-taskstatus"><span class="fa fa-long-arrow-up"></span>升序</li>
+    <li class="sort-down-taskstatus"><span class="fa fa-long-arrow-down"></span>降序</li>
+</ul>
+<div><input type="text"><span class="fa fa-search"></span></div>
+</div> -->
+
+		<div id="my-modal" class="my-modal modal-r">
+			<div class="title">数据库直连采集</div>
+			<div class="move-width">
+				<i class="fa fa-ellipsis-v"></i>
+			</div>
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="contenBox">
+						<div class="item">
+							<span class="item-name">任务类型</span>
+							<div class="marginL68">
+								<input type="text" readonly id="superior">
+							</div>
+						</div>
+						<div class="item">
+							<span class="item-name">入库类型</span>
+							<div class="marginL68">
+								<select name="" id="storagetype">
+									<option value="1">正式数据</option>
+									<option value="2">临时数据</option>
+								</select>
+							</div>
+						</div>
+						<div class="item">
+							<span class="item-name">任务名称</span>
+							<div class="marginL68">
+								<input type="text" id="renwuName">
+							</div>
+						</div>
+						<div class="item zs">
+							<span class="item-name">数据年度范围</span>
+							<div class="marginL85" style="position: relative;">
+								<input type="text" id="getyear" readonly>
+								<div class="hidebox" style="display:none;padding:0 20px;z-index: 1;">
+								</div>
+							</div>
+						</div>
+						<div class="item zs">
+							<span class="item-name">单位名称</span>
+							<div class="marginL68">
+								<select name="" id="unitName">
+								</select>
+							</div>
+						</div>
+						<div class="item zs">
+							<span class="item-name">数据分类</span>
+							<div class="marginL68">
+								<select name="" id="datafl">
+								</select>
+							</div>
+						</div>
+						<div class="item zs">
+							<span class="item-name">数据名称</span>
+							<div class="marginL68">
+								<select name="" id="dataname" style="width:85%">
+								</select>
+								<span class="btn floatR">新增</span>
+							</div>
+						</div>
+						<div class="item ls" style="display: none;">
+							<span class="item-name">数据库类型</span>
+							<div class="marginL68">
+								<select name="" id="dataBaseType">
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="contenBox">
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!-- <span id="importbtn" class="btn btn-blue" onclick="importAarea()">保 &nbsp;存</span> -->
+					<span class="btn" onclick="hideModal()">取 &nbsp;消</span>
+					<span id="setbtn" class="btn btn-blue" onclick="setArea()">保 &nbsp;存</span>
+					<!-- <span id="savebtn" class="btn btn-blue" onclick="addArea()">保 &nbsp;存</span> -->
+					<!-- <span id="modibtn" class="btn btn-blue" onclick="modifyArea()">修 &nbsp;改</span> -->
+				</div>
+			</div>
+		</div>
+
+		<input type="hidden" value="" id="objcode">
+		<!--  unitcode -->
+		<input type="hidden" value="" id="dataType">
+		<!--数据分类    -->
+		<input type="hidden" value="" id="dataName">
+		<!--数据名称    data_name-->
+		<input type="hidden" value="" id="renwuType">
+		<!--任务类型  task_type-->
+		<input type="hidden" value="" id="storage_type">
+		<!--入库类型     storage_type -->
+		<input type="hidden" value="" id="list_id">
+		<!--数据名字ID        list_id-->
+	</body>
+
+</html>
+<script src="../../assets/js/jquery-2.1.1.js"></script>
+<script src="../../assets/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../assets/select/select2.full.min.js"></script>
+<script src="../../assets/js/public.js"></script>
+<script src="../../assets/pager/pager.js"></script>
+<script type="text/javascript" src="../../assets/echarts/highcharts.js"></script>
+<script src="../../assets/js/dataCollect/dataManageAssetShow.js"></script>
+<script>
+	$('.my-table .sift').on('click', function(ev) {
+		$('.filter-box').showFilter(ev);
+	});
+	$('#storagetype').on('change', function() {
+		if($(this).val() == '1') {
+			$('#my-modal .item.zs').show();
+			$('#my-modal .item.ls').hide();
+		} else {
+			$('#my-modal .item.zs').hide();
+			if($('#superior').val() == '数据库备份' || $('#superior').val() == '附加采集') {
+				$('#my-modal .item.ls').show();
+			}
+		}
+	})
+</script>
