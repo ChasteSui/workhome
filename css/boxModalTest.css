@@ -1,0 +1,56 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.block-div{
+	width: 100%;
+	margin: 5px 8px;
+	/*padding: 10px;*/
+}
+
+.div-container{
+	display: flex;
+}
+.box-test-block{
+	border: 1px solid black;
+	padding: 40px;
+	/*display: inline;*/
+}
+
+.div-left{
+	flex: 1;
+}
+.div-right{
+	flex: 2;
+}
+
+.div-nav{
+	margin: 5px 8px;;
+}
+.do-select-team{
+	background-color: #FFFFFF;
+	padding: 5px 8px;
+	box-shadow:2px 2px 3px #aaaaaa;
+}
+
+.div-nav{
+	display: inline-block;
+	position: relative;
+}
+.div-nav ul{
+	min-width: 70px;
+	margin: 10px 5px;
+	list-style: none;
+	background-color: #fff;
+	box-shadow:2px 2px 3px #aaaaaa;
+	position: absolute;
+	display: none;
+}
+.div-nav ul li{
+	padding: 2px 10px;
+	cursor: pointer;
+}
+
+.div-nav ul li:hover{
+	background-color: #33AFFC;
+}

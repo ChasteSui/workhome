@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>盒模型练习</title>
+		<link rel="stylesheet" type="text/css" href="../css/boxModalTest.css"/>
+	</head>
+	<body>
+		<div class="div-container">
+			<div class="block-div div-left">
+				<p class="box-test-block">曾经小小少年</p>
+			</div>
+			<div class="block-div div-right" >
+				<p class="box-test-block">到现在胆大包天</p>
+			</div>
+		</div>
+		<div class="div-nav" id="div-nav">
+			<span class="do-select-team" id="do-select-team">选择你的队伍</span>
+			<ul>
+				<li><span>骑士</span></li>
+				<li><span>湖人</span></li>
+				<li><span>勇士</span></li>
+				<li><span>火箭</span></li>
+				<li><span>76er</span></li>
+			</ul>
+		</div>
+		
+	</body>
+	<script>
+		var select_obj = document.getElementById('do-select-team');
+		var con_obj = document.getElementById('div-nav');
+		var select_ul = con_obj.getElementsByTagName('ul');
+		console.log(select_ul);
+			
+		
+		select_obj.addEventListener('click',function(){
+			select_ul[0].style.display = "inline"; //空值不会显示
+		})
+		
+		
+		
+	</script>
+</html>
