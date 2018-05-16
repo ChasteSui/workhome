@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.dropdown{
+				position: relative;
+				width: 200px;
+				top: 0;
+				left: 20%;
+			}
+			.dropdown-menu{
+				position: absolute;
+				/*display: none;*/
+				top: 100%;
+				left : 0px;
+				z-index: 100000;
+				float: left;
+				min-width: 160px;
+				padding: 5px 0;
+				margin: 2px 0 0;
+				font-size: 14px;
+				text-align: left;
+				list-style: none;
+				background-color: #fff;
+				-webkit-background-clip: padding-box;
+				background-clip: padding-box;
+				border: 1px solid #ccc;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				border-radius: 4px;
+				-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			}
+			.dropdown-menu li{
+				list-style: none;
+				padding: 0;
+			}
+			.dropdown-menu li:hover{
+				background-color: #3081f9;
+			}
+			.dropdown .dropdown-menu li > a {
+      display: block;
+      padding: 3px 20px;
+      clear: both;
+      font-weight: 400;
+      line-height: 1.42857143;
+      color: #7d7d7d;
+      white-space: nowrap;
+      text-decoration: none; }
+		</style>
+	</head>
+	<body>
+		<div class="dropdown">
+            <a href="javascript:;">
+                <span class="fa fa-cog"></span>
+                <span>设置</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="javascript:;" onclick="selectYeat(this)">2016</a></li>
+                <li><a href="javascript:;" onclick="selectYeat(this)">2017</a></li>
+                <li><a href="javascript:;" onclick="selectYeat(this)">2018</a></li>
+            </ul>
+        </div>
+        <input type="" name="select-year" id="select-year" value="" />
+        <button onclick="alert(document.getElementById('select-year').value)">获取值</button>
+	</body>
+	<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+	<script type="text/javascript">
+		function selectYeat(temp){
+			var tar_year = temp.innerHTML;
+			console.log(tar_year);
+			document.getElementById('select-year').value = tar_year;
+		}
+		
+		$(".dropdown-menu li").on("mouseover",function(){
+			console.log($(this).find('a').text());
+			$(this).find('a').css("color","white");
+		})
+		
+//		if(!undefined){
+//			alert("未定义是true");
+//		}else{
+//			alert("false");
+//		}
+	</script>
+</html>

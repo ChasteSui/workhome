@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>展开收起</title>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<style type="text/css">
+			.ssss{
+				height: 10px;
+				width: 20px;
+				background-color: blue;
+				border: 20px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="up()">收起</button>
+		<button onclick="down()">展开</button>
+		<p id="ss">ssssssssssssssssssssssss</p>
+		<p>ffffffffffffffff</p>
+		<span class="ssss"></span>
+		<div class="ssss">
+			
+		</div>
+		<script>
+			function up(){
+				$("#ss").slideUp();
+			}
+			function down(){
+				$("#ss").slideDown();
+			}
+		</script>
+	</body>
+</html>
