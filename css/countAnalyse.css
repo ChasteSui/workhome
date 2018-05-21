@@ -1,0 +1,34 @@
+/*
+ 	统计分析下的审计疑点库、疑点清单、资金统计、疑点统计、工作统计
+ 	五个子模块CSS样式
+ * */
+
+.flex-container{
+	display: flex;
+	flex-direction: row;
+	margin: 10px 0;
+}
+
+.flex-container .flex-project-left{
+	flex: 2;
+}
+
+.flex-container .flex-project-right{
+	flex: 1;
+}
+.flex-container .flex-project-align{
+	flex: 1;
+}
+.flex-row{
+ 	margin-left: 10px;
+}
+.flex-container .title-p{
+	padding: 0 20px;
+    border-left: 3px solid blue;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+.con-content{
+	padding: 20px;
+	background-color: #fff;
+}
