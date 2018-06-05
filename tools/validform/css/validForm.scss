@@ -1,0 +1,14 @@
+$test:blue;
+.test{
+    border: 1px solid brown;
+}
+
+.valid-con{
+    width: 200px;
+    
+    .bind-style{
+        border: 1px solid red;
+    }
+}
+
+
