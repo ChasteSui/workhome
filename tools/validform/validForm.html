@@ -9,6 +9,8 @@
 		
 		<div class="valid-con">
 			<input type="text" name="vf-id" id="vf-id" value="" />
+			<input type="text" name="vf-id" id="vf-id-2" value="" />
+			
 		</div>
 		
 		<script type="text/javascript" src="validForm.js" ></script>
@@ -17,11 +19,21 @@
 			
 			var test = new Vf({
 				el : 'vf-id',
-				type : 'money',
+				validType : 'money',
+				eventType :'onkeyup'
+			});
+			var test2 = new Vf({
+				el : 'vf-id-2',
+				validType : 'money',
 				eventType :'onkeyup'
 			});
 			
-			
+			test.getPara('test通过方法传入的参数');
+			console.log("test2获取原型中的属性   " + test2.name);
+			console.log("test获取原型中的属性   " + test.name);
+			//console.log("访问原型中的   " + test2.__proto__.name);
+//			console.log(test.name = '我被修改了啊');
+//			console.log(test2.name);
 		</script>
 	</body>
 </html>
