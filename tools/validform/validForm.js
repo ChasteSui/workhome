@@ -2,7 +2,7 @@
  * 表单验证
  	$ : 构造函数中的私有变量或私有方法
  	_ : prototype原型中的属性或方法
- 	无标识符的变量或方法为构造函数暴露给外界的API或属性
+ 	无标识符的this变量或方法为构造函数暴露给外界的API或属性
  * 
  * */
 'use strict';
@@ -20,12 +20,22 @@ var Vf = function ValidForm(setting) {
 			return false;
 		}
 		//将用户自定义设置更新到默认初始化设置中
+		var _con;
 		for(var key in setting) {
 			//传值不规范 则使用默认的值
-			if (setting[key]!="" && setting[key] !=null && setting[key].length > 0 ) {  
+			console.log(setting[key].constructor);
+			_con = setting[key].constructor;
+
+			if(_con != null && _con != undefined && _con === String && _con != "") {
 				this._default_setting[key] = setting[key];
 			}
-			
+			if(_con != null && _con != undefined && _con === Array && _con.length > 0) {
+				this._default_setting[key] = setting[key];
+			}
+			if(_con != null && _con != undefined && _con === Object) {
+				this._default_setting[key] = setting[key];
+			}
+
 		}
 		$initFun(this._default_setting); //调用初始化函数
 	}
@@ -33,24 +43,21 @@ var Vf = function ValidForm(setting) {
 	//初始化函数 不要放在原型中  避免外界直接调用
 	function $initFun(user_setting) {
 		//console.log(user_setting);
-
 		//为目标元素绑定验证事件
 		var eventStr = user_setting.eventType.substring(2);
 		//console.log(eventStr);
 
-		if(!user_setting.userReg.enabled) {
-			$tar_ele.addEventListener(eventStr, function() {
-				var ele_val = $tar_ele.value,  //验证项的值
-					v_type = user_setting.validType,  //用户选择的验证类型  默认require
-					u_reg = user_setting.userReg;   //用户自定义正则
-				var isTrue = $RegTest(ele_val, v_type, u_reg);
-				if(!isTrue) {
-					$tar_ele.classList.add('bind-style');
-				} else {
-					$tar_ele.classList.remove('bind-style');
-				}
-			});
-		}
+		$tar_ele.addEventListener(eventStr, function() {
+			var ele_val = $tar_ele.value, //验证项的值
+				v_type = user_setting.validType, //用户选择的验证类型  默认require
+				u_reg = user_setting.userReg; //用户自定义正则
+			var isTrue = $RegTest(ele_val, v_type, u_reg);
+			if(!isTrue) {
+				$tar_ele.classList.add('bind-style');
+			} else {
+				$tar_ele.classList.remove('bind-style');
+			}
+		});
 
 	}
 
@@ -59,19 +66,20 @@ var Vf = function ValidForm(setting) {
 		//console.log(_type[0]);
 		var d_reg_obj = Vf.prototype._default_type;
 		if(_userReg.enabled) { //true  使用用户自定义正则
+
 			return _userReg.reg.test(_val);
 		} else { //使用指定正则
 			//数组可以使用indexof  匹配的是每一个元素
 			var _flag = true;
 			for(var tpye_key in d_reg_obj) {
 				if(_type.indexOf(tpye_key) != -1) {
-					var _reg = d_reg_obj[tpye_key] ;
+					var _reg = d_reg_obj[tpye_key];
 					_flag = _reg.test(_val);
-					if (!_flag) break;   //_flag 为false表示不符合正则 则终止循环  绑定验证
-					
+					if(!_flag) break; //_flag 为false表示不符合正则 则终止循环  绑定验证
+
 				}
 			}
-			
+
 			return _flag;
 
 		}
@@ -111,12 +119,14 @@ Vf.prototype = {
 	},
 	//默认支持的验证类型
 	_default_type: {
-//		"require": /\S/    //空 包括space tab等
-		"require": /\S/ ,    //空 包括space tab等
-		"money": /(^\s*)/g,
-		"telephone": /(^\s*)|(\s*$)/g
+		//		"require": /\S/    //空 包括space tab等
+		"require": /\S/, //空 包括space tab等
+		"money": /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/, //默认要两位小数
+		"telephone": /^[1][3,4,5,7,8][0-9]{9}$/ //,  //手机号  11位 1开头 第二位是3,4,5,7,8
+		//"email":/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/    //email
 
 	},
+
 	/*原型中方法
 	  传入的参数不需要覆盖构造函数中的参数
 	 * */
