@@ -23,7 +23,7 @@ var Vf = function ValidForm(setting) {
 		var _con;
 		for(var key in setting) {
 			//传值不规范 则使用默认的值
-			console.log(setting[key].constructor);
+			//console.log(setting[key].constructor);
 			_con = setting[key].constructor;
 
 			if(_con != null && _con != undefined && _con === String && _con != "") {
@@ -61,7 +61,7 @@ var Vf = function ValidForm(setting) {
 
 	}
 
-	//校验方法  目前先支持一个验证  后续更换成支持多个正则
+	//支持多个默认正则 及 自定义正则
 	function $RegTest(_val, _type, _userReg) {
 		//console.log(_type[0]);
 		var d_reg_obj = Vf.prototype._default_type;
@@ -104,15 +104,13 @@ var Vf = function ValidForm(setting) {
 Vf.prototype = {
 	constructor: Vf, //指向构造函数
 	__proto__: null, //指向null  防止外界通过__proto__修改原型中属性
-	name: '我是原型中的属性',
-	//构造函数私有属性
 	_default_setting: {
 		//默认参数
 		validType: ['require'], //校验类型  require 必填  array
 		eventType: 'onblur', //事件类型  默认onblur   string   定义一个枚举类型 来判断用户输入
 		userReg: {
 			enabled: false,
-			reg: ''
+			reg: null
 		} //是否使用用户自定义正则   两个参数 1 true 使用   2 用户正则
 		//warning : 0 ,  //提醒样式   0是默认样式 红框
 
@@ -130,7 +128,7 @@ Vf.prototype = {
 	/*原型中方法
 	  传入的参数不需要覆盖构造函数中的参数
 	 * */
-	sayHello: function() {
+	_sayHello: function() {
 		console.log("Hello 我是原型中方法");
 	}
 
