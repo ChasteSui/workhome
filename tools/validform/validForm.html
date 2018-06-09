@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>表单验证</title>
-		<link rel="stylesheet" type="text/css" href="css/validForm.css"/>
+		<link rel="stylesheet" type="text/css" href="css/validForm.css" />
 	</head>
+
 	<body>
-		
+
 		<div class="valid-con">
+			<label for="vf-id">脚本测试</label>
 			<input type="text" name="vf-id" id="vf-id" value="" />
 			<input type="text" name="vf-id" id="vf-id-2" value="" />
-			
 		</div>
-		
-		<script type="text/javascript" src="validForm.js" ></script>
+
+		<script type="text/javascript" src="validForm.js"></script>
 		<script type="text/javascript">
-			
-			
 			var test = new Vf({
-				el : 'vf-id',
-				validType : 'money',
-				eventType :'onkeyup'
+				el: 'vf-id',
+				validType: ['require'],
+				eventType: 'onblur'
 			});
-			var test2 = new Vf({
-				el : 'vf-id-2',
-				validType : 'money',
-				eventType :'onkeyup'
-			});
-			
-			test.getPara('test通过方法传入的参数');
-			console.log("test2获取原型中的属性   " + test2.name);
-			console.log("test获取原型中的属性   " + test.name);
+			//			var test2 = new Vf({
+			//				el : 'vf-id-2',
+			//				validType : 'everyThing',
+			//				eventType :'onclick'
+			//			});
+			//			var test2 = new Vf(""); //如果传的不是设置对象 则不执行初始化
+			//			test.getPara('test通过方法传入的参数');
+			//			//test.__proto__.name = "protoType中的属性被修改了";  //将proto属性设置成null
+			//			console.log(test2.name);
+			//console.log("test2获取原型中的属性   " + test2.name);
+			//			console.log(test.constructor);
+			//			if (test.constructor == Vf) {
+			//				alert("true");
+			//			}
 			//console.log("访问原型中的   " + test2.__proto__.name);
-//			console.log(test.name = '我被修改了啊');
-//			console.log(test2.name);
+			//			console.log(test.name = '我被修改了啊');
+			//			console.log(test2.name);
 		</script>
 	</body>
+
 </html>
